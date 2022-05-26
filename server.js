@@ -15,9 +15,9 @@ app.use(cors());
 // });
 
 // Routes 
-// app.get('/', (req, res) => {
-//     res.send('Hello World');
-// });
+app.get('/', (req, res) => {
+    res.send('Hello World');
+});
 
 
 // app.get('/employees', (req, res) => {
@@ -31,9 +31,13 @@ dotenv.config({path: './Config/config.env'})
 connectDB();
 
 // Routes
-app.use('/', require('./routes/employees'));
+app.use('/emp', require('./routes/employees'));
 
-app.listen(port);
+app.listen(port, () => {
+    console.log(
+      `Server listening on ${process.env.NODE_ENV} mode ont port ${port}!`
+    );
+  });
 
 
 
