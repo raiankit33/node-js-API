@@ -2,12 +2,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const port = process.env.PORT || 8080
+const PORT = process.env.PORT || 8080
 // Dotenv is a zero-dependency module that loads environment variables from a .env file into process.env
 
 const app = express();
-app.use(bodyParser.json());
-
+//app.use(bodyParser.json());
+app.use(express.json())
 app.use(cors());
 // Middleware
 // app.use('/employees', () => {
@@ -33,7 +33,7 @@ connectDB();
 // Routes
 app.use('/emp', require('./routes/employees'));
 
-app.listen(port, () => {
+app.listen(PORT, () => {
     console.log(
       `Server listening on ${process.env.NODE_ENV} mode ont port ${port}!`
     );
